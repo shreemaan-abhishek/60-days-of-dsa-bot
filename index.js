@@ -1,24 +1,6 @@
 require('dotenv').config()
 
 const needle = require('needle')
-const rulesURL = 'https://api.twitter.com/2/tweets/search/stream/rules';
-async function getAllRules() {
-
-    const response = await needle('get', rulesURL, {
-        headers: {
-            "authorization": `Bearer ${process.env.BEARER_TOKEN}`
-        }
-    })
-
-    if (response.statusCode !== 200) {
-        console.log("Error:", response.statusMessage, response.statusCode)
-        throw new Error(response.body);
-    }
-
-    console.log(response.body);
-}
-
-getAllRules()
 
 function streamConnect(retryAttempt) {
 
