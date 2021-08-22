@@ -1,0 +1,29 @@
+{
+  "name": "60-days-of-dsa-bot",
+  "version": "1.0.0",
+  "description": "Twitter bot that retweets posts with #60DaysOfDSA and #DSAWithKunal",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shreemaan-abhishek/60-days-of-dsa-bot.git"
+  },
+  "keywords": [
+    "twitter-bot",
+    "bot"
+  ],
+  "author": "shreemaan-abhishek",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shreemaan-abhishek/60-days-of-dsa-bot/issues"
+  },
+  "homepage": "https://github.com/shreemaan-abhishek/60-days-of-dsa-bot#readme",
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "dotenv": "^10.0.0",
+    "needle": "^2.8.0",
+    "uuid": "^8.3.2"
+  }
+}
