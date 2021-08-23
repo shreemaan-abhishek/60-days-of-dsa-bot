@@ -66,6 +66,8 @@ function streamConnect(retryAttempt) {
 })();
 
 const retweet = tweetId => {
-    const data =  twitterClient.tweets.statusesRetweetById({ id: tweetId });
-    console.log(data)
+    const retweetResponse =  twitterClient.tweets.statusesRetweetById({ id: tweetId });
+    retweetResponse
+    .then( response => console.log(response))
+    .catch( err => console.log(err))
 }
