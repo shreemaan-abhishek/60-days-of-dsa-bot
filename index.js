@@ -2,6 +2,15 @@ require('dotenv').config()
 
 const needle = require('needle')
 
+const {TwitterClient} = require('twitter-api-client')
+
+const twitterClient = new TwitterClient({
+  apiKey: process.env.OAUTH_CONSUMER_KEY,
+  apiSecret: process.env.OAUTH_CONSUMER_SECRET,
+  accessToken: process.env.OAUTH_TOKEN,
+  accessTokenSecret: process.env.OAUTH_TOKEN_SECRET,
+});
+
 function streamConnect(retryAttempt) {
 
     const stream = needle.get("https://api.twitter.com/2/tweets/search/stream", {
@@ -20,7 +29,12 @@ function streamConnect(retryAttempt) {
             console.log(json.data.id)
             // A successful connection resets retry count.
             retryAttempt = 0;
+
+            // retweet
+            retweet(json.data.id)
+            
         } catch (e) {
+            console.log(data)
             if (data.detail === "This stream is currently at the maximum allowed connection limit.") {
                 console.log(data.detail)
                 process.exit(1)
@@ -50,3 +64,8 @@ function streamConnect(retryAttempt) {
     // Listen to the stream.
     streamConnect(0);
 })();
+
+const retweet = tweetId => {
+    const data =  twitterClient.tweets.statusesRetweetById({ id: tweetId });
+    console.log(data)
+}
